@@ -44,6 +44,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'Shougo/vimfiler'
+
 NeoBundle 'tomasr/molokai'
 
 NeoBundle 'nanotech/jellybeans.vim'
