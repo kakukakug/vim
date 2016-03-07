@@ -32,6 +32,8 @@ set mouse=a
 set shellslash
 set nf=""
 
+let g:vimfiler_as_default_explorer=1
+
 if has('vim_starting')
   if &compatible
     set nocompatible               " Be iMproved
