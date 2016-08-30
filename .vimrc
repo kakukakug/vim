@@ -47,6 +47,14 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'Shougo/vimfiler'
+NeoBundle 'Shougo/vimproc', {
+  \ 'build' : {
+    \ 'windows' : 'make -f make_mingw32.mak',
+    \ 'cygwin' : 'make -f make_cygwin.mak',
+    \ 'mac' : 'make -f make_mac.mak',
+    \ 'unix' : 'make -f make_unix.mak',
+  \ },
+\ }
 
 NeoBundle 'tomasr/molokai'
 
@@ -56,6 +64,19 @@ NeoBundle 'vim-scripts/twilight'
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'blueshirts/darcula'
 
+
+
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 't9md/vim-textmanip'
+NeoBundle 'hokaccha/vim-html5validator'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'osyo-manga/vim-watchdogs'
 filetype plugin indent on
 NeoBundleCheck
 call neobundle#end()
