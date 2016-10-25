@@ -79,6 +79,10 @@ NeoBundle 't9md/vim-textmanip'
 NeoBundle 'hokaccha/vim-html5validator'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-watchdogs'
+
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'kannokanno/previm'
+
 filetype plugin indent on
 NeoBundleCheck
 call neobundle#end()
