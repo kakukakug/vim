@@ -32,6 +32,8 @@ set mouse=a
 set shellslash
 set nf=""
 
+:source $VIMRUNTIME/macros/matchit.vim
+
 let g:vimfiler_as_default_explorer=1
 
 if has('vim_starting')
@@ -67,7 +69,7 @@ NeoBundle 'blueshirts/darcula'
 
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
