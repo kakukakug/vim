@@ -79,6 +79,7 @@ NeoBundle 't9md/vim-textmanip'
 NeoBundle 'hokaccha/vim-html5validator'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-watchdogs'
+NeoBundle 'Lokaltog/vim-easymotion'
 
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
@@ -95,6 +96,37 @@ if ($ft=='ruby')
 else
   colorscheme darcula
 endif
+
+
+
+" vimfiler の設定
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_as_default_explorer = 1
+
+" matchit
+source $VIMRUNTIME/macros/matchit.vim
+let b:match_ignorecase = 1
+
+" vim-easymotion {{{
+let g:EasyMotion_do_mapping = 0
+nmap s <Plug>(easymotion-s2)
+xmap s <Plug>(easymotion-s2)
+omap z <Plug>(easymotion-s2)
+nmap g/ <Plug>(easymotion-sn)
+xmap g/ <Plug>(easymotion-sn)
+omap g/ <Plug>(easymotion-tn)
+let g:EasyMotion_smartcase = 1
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_keys = 'ASDFGHJKL;'
+let g:EasyMotion_use_upper = 1
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_space_jump_first = 1
+hi EasyMotionTarget guifg=#80a0ff ctermfg=81
+" }}}
+
+
 
 
 "以下のURLを参考にコピペ！ http://www.karakaram.com/unite 
