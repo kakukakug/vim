@@ -84,6 +84,7 @@ NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
 
+NeoBundle 'majutsushi/tagbar'
 filetype plugin indent on
 NeoBundleCheck
 call neobundle#end()
