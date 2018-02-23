@@ -85,6 +85,7 @@ NeoBundle 'blueshirts/darcula'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 "NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
@@ -107,6 +108,12 @@ augroup END
 NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'vim-scripts/vcscommand.vim'
+
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+
+
+
 filetype plugin indent on
 NeoBundleCheck
 call neobundle#end()
@@ -126,7 +133,7 @@ let g:vimfiler_as_default_explorer = 1
 source $VIMRUNTIME/macros/matchit.vim
 let b:match_ignorecase = 1
 
-" vim-easymotion 
+" vim-easymotion {{{
 let g:EasyMotion_do_mapping = 0
 nmap s <Plug>(easymotion-s2)
 xmap s <Plug>(easymotion-s2)
@@ -143,6 +150,7 @@ let g:EasyMotion_use_upper = 1
 let g:EasyMotion_enter_jump_first = 1
 let g:EasyMotion_space_jump_first = 1
 hi EasyMotionTarget guifg=#80a0ff ctermfg=81
+" }}}
 
 "以下のURLを参考にコピペ！ http://www.karakaram.com/unite 
 "unite prefix key. 
@@ -223,6 +231,10 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 
+"set snippet file dir
+let g:neosnippet#snippets_directory='~/.vim/bundle/neosnippet-snippets/snippets/,~/.vim/snippets'
+
+
 
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -294,4 +306,16 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+" vim-airline/vim-airlineの設定
+let g:airline_theme = 'angr'
+set laststatus=2
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
+let g:airline_section_c = '%t'
+let g:airline_section_x = '%{&filetype}'
+let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
 
