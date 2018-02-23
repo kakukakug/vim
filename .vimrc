@@ -61,6 +61,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
@@ -155,7 +156,7 @@ hi EasyMotionTarget guifg=#80a0ff ctermfg=81
 "以下のURLを参考にコピペ！ http://www.karakaram.com/unite 
 "unite prefix key. 
 nnoremap [unite] <Nop>
-nmap <Space>f [unite]
+nmap <Space>u [unite]
  
 "unite general settings
 "インサートモードで開始
@@ -318,4 +319,6 @@ let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
 let g:airline_section_c = '%t'
 let g:airline_section_x = '%{&filetype}'
 let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
+
+
 
