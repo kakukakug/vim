@@ -34,7 +34,9 @@ set mouse=a
 set shellslash
 set nf=""
 
-" set ambiwidth=double
+set ambiwidth=double
+let &grepprg="grep -rnIH --exclude=.git --exclude-dir=.hg --exclude-dir=.svn --exclude=tags"
+
 
 augroup fileTypeIndent
     autocmd!
@@ -323,5 +325,13 @@ let g:airline_section_c = '%t'
 let g:airline_section_x = '%{&filetype}'
 let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
 
+
+" vim-emmet の設定
+let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_settings = {
+    \    'variables': {
+    \      'lang': "ja"
+    \    }
+    \ }
 
 
