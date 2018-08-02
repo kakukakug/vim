@@ -85,7 +85,7 @@ NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'vim-scripts/twilight'
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'blueshirts/darcula'
-
+NeoBundle 'morhetz/gruvbox'
 
 
 NeoBundle 'nathanaelkane/vim-indent-guides'
@@ -118,6 +118,8 @@ NeoBundle 'vim-scripts/vcscommand.vim'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 
+"NeoBundle 'Lokaltog/vim-powerline'
+
 
 
 filetype plugin indent on
@@ -125,10 +127,20 @@ NeoBundleCheck
 call neobundle#end()
 
 syntax on
+"colorscheme darcula
 "colorscheme molokai
-set background=dark
-colorscheme darcula
+"colorscheme iceberg 
+colorscheme gruvbox
 
+set background=dark
+
+augroup fileTypeColorScheme
+    autocmd!
+    autocmd BufNewFile,BufRead *.py colorscheme gruvbox
+    autocmd BufNewFile,BufRead *.rb colorscheme gruvbox
+    autocmd BufNewFile,BufRead *.md colorscheme gruvbox
+    autocmd BufNewFile,BufRead *.txt colorscheme gruvbox
+augroup END
 
 
 " vimfiler の設定
@@ -315,8 +327,10 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 
 
 " vim-airline/vim-airlineの設定
-let g:airline_theme = 'angr'
+" let g:airline_theme = 'angr'
+let g:airline_theme = 'gruvbox'
 set laststatus=2
+"let g:airline_powerline_fonts = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#wordcount#enabled = 0
