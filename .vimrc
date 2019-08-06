@@ -2,6 +2,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932
 
+
 set nocompatible
 set number
 
@@ -33,6 +34,7 @@ set clipboard=unnamed,unnamedplus
 set mouse=a
 set shellslash
 set nf=""
+set list listchars=tab:>-,trail:_
 
 set ambiwidth=double
 let &grepprg="grep -rnIH --exclude=.git --exclude-dir=.hg --exclude-dir=.svn --exclude=tags"
@@ -44,6 +46,9 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.md setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.txt setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.html setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.json setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2 conceallevel=0
 augroup END
 
 
@@ -103,6 +108,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'mattn/webapi-vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
@@ -229,6 +235,7 @@ map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
 
+" neosnippet の設定.
 " neosnippet key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -342,10 +349,17 @@ let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{air
 
 " vim-emmet の設定
 let g:user_emmet_leader_key='<c-e>'
-let g:user_emmet_settings = {
-    \    'variables': {
-    \      'lang': "ja"
-    \    }
-    \ }
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/snippet/snippets_reactnative.json')), "\n"))
+
+"自作のコマンド郡
+imap <silent> <C-L><C-D> <C-R>=strftime("%Y-%m-%d")<CR>
+nmap <silent> <C-L><C-D> <ESC>i<C-R>=strftime("%Y-%m-%d")<CR><CR><ESC>
+:command! CountChar :%s/.//gn
+
+"テンプレートを読み込む
+augroup templateload
+	autocmd!
+	autocmd BufNewFile *.md 0r ~/.vim/template/template.md
+augroup END
 
 
