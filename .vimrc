@@ -1,7 +1,8 @@
+" vim 基本設定
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,cp932
-
+set visualbell
 
 set nocompatible
 set number
@@ -39,26 +40,35 @@ set list listchars=tab:>-,trail:_
 set ambiwidth=double
 let &grepprg="grep -rnIH --exclude=.git --exclude-dir=.hg --exclude-dir=.svn --exclude=tags"
 
+" <leader>デフォルトはバックスラッシュ
+" 変更が必要なら以下で上書きする space
+let mapleader = "\<Space>"
 
+" 拡張子のインデント・タブの設定
 augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.py setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.md setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.rb setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.txt setlocal expandtab tabstop=4 softtabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
+    autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2 
+    autocmd BufNewFile,BufRead *.ts setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2 filetype=typescript
+    autocmd BufNewFile,BufRead *.tsx setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2 filetype=typescript
     autocmd BufNewFile,BufRead *.html setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
     autocmd BufNewFile,BufRead *.json setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2 conceallevel=0
 augroup END
 
+" 折りたたみ設定
+augroup fileTypeFold
+    autocmd!
+    autocmd BufNewFile,BufRead *.tsx setlocal foldmethod=syntax foldlevel=1 
+augroup END
 
 :source $VIMRUNTIME/macros/matchit.vim
 
 :let $TODAY = strftime('%Y%m%d')
 
 
-
-let g:vimfiler_as_default_explorer=1
 
 if has('vim_starting')
   if &compatible
@@ -67,12 +77,12 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
+
+" neobundleによるプラグインの定義
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
@@ -82,49 +92,57 @@ NeoBundle 'Shougo/vimproc', {
     \ 'unix' : 'make -f make_unix.mak',
   \ },
 \ }
+NeoBundle 'ujihisa/unite-colorscheme'
+
+
+NeoBundle 'Shougo/neomru.vim'
+
 
 NeoBundle 'tomasr/molokai'
-
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'vim-scripts/twilight'
 NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'blueshirts/darcula'
 NeoBundle 'morhetz/gruvbox'
+NeoBundle 'cocopon/iceberg.vim'
+
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
+"NeoBundle 'Lokaltog/vim-powerline'
 
 
+NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-"NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tomtom/tcomment_vim'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 't9md/vim-textmanip'
-NeoBundle 'hokaccha/vim-html5validator'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'osyo-manga/vim-watchdogs'
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'hokaccha/vim-html5validator'
+NeoBundle 'vim-scripts/gtags.vim'
+
+NeoBundle 'tpope/vim-fugitive'
+"NeoBundle 'scrooloose/nerdtree'
+
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 't9md/vim-textmanip'
+NeoBundle 'vim-syntastic/syntastic'
+NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
-augroup PrevimSettings
-    autocmd!
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-augroup END
 
-NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle 'AndrewRadev/splitjoin.vim'
 NeoBundle 'vim-scripts/vcscommand.vim'
 
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
+" vim LSP TypeScript 
+NeoBundle 'prettier/vim-prettier'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'Quramy/tsuquyomi'
 
-"NeoBundle 'Lokaltog/vim-powerline'
 
 
 
@@ -132,14 +150,24 @@ filetype plugin indent on
 NeoBundleCheck
 call neobundle#end()
 
-syntax on
+" previm の設定
+augroup PrevimSettings
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+augroup END
+
+
+
+
+" カラースキーマの設定
 "colorscheme darcula
 "colorscheme molokai
 "colorscheme iceberg 
 colorscheme gruvbox
-
 set background=dark
+syntax on
 
+" ファイルによるカラースキーマ設定上書き
 augroup fileTypeColorScheme
     autocmd!
     autocmd BufNewFile,BufRead *.py colorscheme gruvbox
@@ -157,24 +185,35 @@ let g:vimfiler_as_default_explorer = 1
 source $VIMRUNTIME/macros/matchit.vim
 let b:match_ignorecase = 1
 
-" vim-easymotion {{{
+" vim-easymotion
+" Disable default mappings
 let g:EasyMotion_do_mapping = 0
 nmap s <Plug>(easymotion-s2)
 xmap s <Plug>(easymotion-s2)
 omap z <Plug>(easymotion-s2)
+
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+" 移動先に使うキー
+let g:EasyMotion_keys = 'ASDFGHJKL;'
+" Show target key with upper case to improve readability
+let g:EasyMotion_use_upper = 1
+" Jump to first match with enter & space
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_space_jump_first = 1
+
+" `JK` Motions: Extend line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+" keep cursor column with `JK` motions
+let g:EasyMotion_startofline = 0
+" 任意文字数での検索
 nmap g/ <Plug>(easymotion-sn)
 xmap g/ <Plug>(easymotion-sn)
 omap g/ <Plug>(easymotion-tn)
-let g:EasyMotion_smartcase = 1
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-let g:EasyMotion_startofline = 0
-let g:EasyMotion_keys = 'ASDFGHJKL;'
-let g:EasyMotion_use_upper = 1
-let g:EasyMotion_enter_jump_first = 1
-let g:EasyMotion_space_jump_first = 1
+
+" ハイライトの表示
 hi EasyMotionTarget guifg=#80a0ff ctermfg=81
-" }}}
 
 "以下のURLを参考にコピペ！ http://www.karakaram.com/unite 
 "unite prefix key. 
@@ -346,17 +385,42 @@ let g:airline_section_c = '%t'
 let g:airline_section_x = '%{&filetype}'
 let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
 
+" prettierの設定
+let g:prettier#config#print_width = 100
+let g:prettier#config#tab_width = 2
+let g:prettier#config#single_quote = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'true'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#trailing_comma = 'es5'
+
+
+" syntasticの設定
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+ 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 " vim-emmet の設定
 let g:user_emmet_leader_key='<c-e>'
 let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/snippet/snippets_reactnative.json')), "\n"))
 
+"netrwの設定
+let g:netrw_liststyle=1
+let g:netrw_banner=0
+let g:netrw_sizestyle="H"
+let g:netrw_timefmt="%Y/%m/%d %H:%M:%S"
+let g:netrw_preview=1
+
 "自作のコマンド郡
 imap <silent> <C-L><C-D> <C-R>=strftime("%Y-%m-%d")<CR>
 nmap <silent> <C-L><C-D> <ESC>i<C-R>=strftime("%Y-%m-%d")<CR><CR><ESC>
 :command! CountChar :%s/.//gn
-
-"テンプレートを読み込む
+"自作テンプレートを読み込む
 augroup templateload
 	autocmd!
 	autocmd BufNewFile *.md 0r ~/.vim/template/template.md
