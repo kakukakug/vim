@@ -416,6 +416,14 @@ let g:netrw_sizestyle="H"
 let g:netrw_timefmt="%Y/%m/%d %H:%M:%S"
 let g:netrw_preview=1
 
+" 日本語入力がオンのままでも使えるコマンド(Enterキーは必要)
+nnoremap あ a
+nnoremap い i
+nnoremap う u
+nnoremap お o
+nnoremap っd dd
+nnoremap っy yy
+
 "自作のコマンド郡
 imap <silent> <C-L><C-D> <C-R>=strftime("%Y-%m-%d")<CR>
 nmap <silent> <C-L><C-D> <ESC>i<C-R>=strftime("%Y-%m-%d")<CR><CR><ESC>
@@ -426,5 +434,7 @@ augroup templateload
 	autocmd BufNewFile *.md 0r ~/.vim/template/template.md
 augroup END
 
+"vimfilerを固定で開く
+:command! Vf :VimFiler -split -simple -winwidth=35 -no-quit
 
 
