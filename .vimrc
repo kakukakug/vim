@@ -266,6 +266,7 @@ endfunction"}}}
 "set dictionary=/usr/share/dict/words
 
 "gtags GNU GLOBAL
+"gtags -v
 map <C-g> :Gtags 
 map <C-h> :Gtags -f %<CR>
 map <C-m> :Gtags -r <C-r><C-w><CR>
@@ -273,6 +274,8 @@ map <C-j> :GtagsCursor<CR>
 map <C-n> :cn<CR>
 map <C-p> :cp<CR>
 
+"ctags -R
+set tags=./tags;,tags;
 
 " neosnippet の設定.
 " neosnippet key-mappings.
@@ -383,15 +386,16 @@ let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
 let g:airline_section_c = '%t'
 let g:airline_section_x = '%{&filetype}'
-let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
+"let g:airline_section_z = '%3l:%2v %{airline#extensions#ale#get_warning()} %{airline#extensions#ale#get_error()}'
+"let g:airline_section_z = '%3l:%2v'
 
 " prettierの設定
-let g:prettier#config#print_width = 100
+"let g:prettier#config#print_width = 100
 let g:prettier#config#tab_width = 2
-let g:prettier#config#single_quote = 'true'
+"let g:prettier#config#single_quote = 'true'
 let g:prettier#config#jsx_bracket_same_line = 'true'
 let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#trailing_comma = 'es5'
+"let g:prettier#config#trailing_comma = 'es5'
 
 
 " syntasticの設定
@@ -416,6 +420,8 @@ let g:netrw_sizestyle="H"
 let g:netrw_timefmt="%Y/%m/%d %H:%M:%S"
 let g:netrw_preview=1
 
+
+
 " 日本語入力がオンのままでも使えるコマンド(Enterキーは必要)
 nnoremap あ a
 nnoremap い i
@@ -429,12 +435,13 @@ imap <silent> <C-L><C-D> <C-R>=strftime("%Y-%m-%d")<CR>
 nmap <silent> <C-L><C-D> <ESC>i<C-R>=strftime("%Y-%m-%d")<CR><CR><ESC>
 :command! CountChar :%s/.//gn
 "自作テンプレートを読み込む
-augroup templateload
-	autocmd!
-	autocmd BufNewFile *.md 0r ~/.vim/template/template.md
-augroup END
+"augroup templateload
+"	autocmd!
+"	autocmd BufNewFile *.md 0r ~/.vim/template/template.md
+"augroup END
 
 "vimfilerを固定で開く
 :command! Vf :VimFiler -split -simple -winwidth=35 -no-quit
+
 
 
