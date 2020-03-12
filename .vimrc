@@ -72,7 +72,7 @@ augroup END
 
 if has('vim_starting')
   if &compatible
-    set nocompatible               " Be iMproved
+   set nocompatible               " Be iMproved
   endif
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
@@ -83,7 +83,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
+NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
     \ 'windows' : 'make -f make_mingw32.mak',
@@ -92,7 +92,14 @@ NeoBundle 'Shougo/vimproc', {
     \ 'unix' : 'make -f make_unix.mak',
   \ },
 \ }
-NeoBundle 'ujihisa/unite-colorscheme'
+
+NeoBundle 'Shougo/vimfiler'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'justinmk/vim-sneak'
+NeoBundle 'vim-scripts/ReplaceWithRegister'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'bkad/CamelCaseMotion'
 
 
 NeoBundle 'Shougo/neomru.vim'
@@ -112,12 +119,9 @@ NeoBundle 'vim-airline/vim-airline-themes'
 "NeoBundle 'Lokaltog/vim-powerline'
 
 
-NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'hokaccha/vim-html5validator'
 NeoBundle 'vim-scripts/gtags.vim'
 
@@ -187,14 +191,12 @@ let b:match_ignorecase = 1
 
 " vim-easymotion
 " Disable default mappings
-let g:EasyMotion_do_mapping = 0
-nmap s <Plug>(easymotion-s2)
-xmap s <Plug>(easymotion-s2)
-omap z <Plug>(easymotion-s2)
-
+"let g:EasyMotion_do_mapping = 0
+nmap <Leader>s <Plug>(easymotion-s2)
+xmap <Leader>s <Plug>(easymotion-s2)
+nmap <Leader>t <Plug>(easymotion-t2)
 " Turn on case sensitive feature
 let g:EasyMotion_smartcase = 1
-" 移動先に使うキー
 let g:EasyMotion_keys = 'ASDFGHJKL;'
 " Show target key with upper case to improve readability
 let g:EasyMotion_use_upper = 1
@@ -206,14 +208,19 @@ let g:EasyMotion_space_jump_first = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 " keep cursor column with `JK` motions
-let g:EasyMotion_startofline = 0
-" 任意文字数での検索
+"let g:EasyMotion_startofline = 0
+"" 任意文字数での検索
 nmap g/ <Plug>(easymotion-sn)
 xmap g/ <Plug>(easymotion-sn)
 omap g/ <Plug>(easymotion-tn)
-
 " ハイライトの表示
 hi EasyMotionTarget guifg=#80a0ff ctermfg=81
+" /vim-easymotion
+
+" CamelCaseMotion 
+let g:camelcasemotion_key = '<leader>'
+" /CamelCaseMotion 
+
 
 "以下のURLを参考にコピペ！ http://www.karakaram.com/unite 
 "unite prefix key. 
