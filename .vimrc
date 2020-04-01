@@ -427,7 +427,9 @@ let g:netrw_sizestyle="H"
 let g:netrw_timefmt="%Y/%m/%d %H:%M:%S"
 let g:netrw_preview=1
 
-
+"tsukuyomi
+set ballooneval
+autocmd FileType typescript nmap <buffer> <Leader>t : <C-u>echo tsuquyomi#hint()<CR>
 
 " 日本語入力がオンのままでも使えるコマンド(Enterキーは必要)
 nnoremap あ a
