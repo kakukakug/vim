@@ -7,7 +7,6 @@ set visualbell
 set nocompatible
 set number
 
-set noexpandtab
 set softtabstop=0
 
 set tabstop=4
@@ -82,8 +81,13 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'ujihisa/unite-colorscheme'
+
+
+
+"NeoBundle 'Shougo/vimfiler'
+"NeoBundle 'Shougo/unite.vim'
+"NeoBundle 'ujihisa/unite-colorscheme'
+"NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vimproc', {
   \ 'build' : {
     \ 'windows' : 'make -f make_mingw32.mak',
@@ -93,26 +97,24 @@ NeoBundle 'Shougo/vimproc', {
   \ },
 \ }
 
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'justinmk/vim-sneak'
 NeoBundle 'vim-scripts/ReplaceWithRegister'
-NeoBundle 'mattn/emmet-vim'
 NeoBundle 'bkad/CamelCaseMotion'
 
+NeoBundle 'mattn/emmet-vim'
 
-NeoBundle 'Shougo/neomru.vim'
 
 
-NeoBundle 'tomasr/molokai'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'vim-scripts/twilight'
-NeoBundle 'vim-scripts/Wombat'
-NeoBundle 'blueshirts/darcula'
+"NeoBundle 'tomasr/molokai'
+"NeoBundle 'nanotech/jellybeans.vim'
+"NeoBundle 'w0ng/vim-hybrid'
+"NeoBundle 'vim-scripts/twilight'
+"NeoBundle 'vim-scripts/Wombat'
+"NeoBundle 'blueshirts/darcula'
 NeoBundle 'morhetz/gruvbox'
-NeoBundle 'cocopon/iceberg.vim'
+"NeoBundle 'cocopon/iceberg.vim'
 
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
@@ -123,32 +125,30 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'hokaccha/vim-html5validator'
-NeoBundle 'vim-scripts/gtags.vim'
-
-NeoBundle 'tpope/vim-fugitive'
-"NeoBundle 'scrooloose/nerdtree'
+"NeoBundle 'vim-scripts/gtags.vim'
 
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'tomtom/tcomment_vim'
-NeoBundle 't9md/vim-textmanip'
-NeoBundle 'vim-syntastic/syntastic'
-NeoBundle 'osyo-manga/vim-watchdogs'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'majutsushi/tagbar'
-NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'kannokanno/previm'
 
 NeoBundle 'AndrewRadev/splitjoin.vim'
-NeoBundle 'vim-scripts/vcscommand.vim'
 
 " vim LSP TypeScript 
 NeoBundle 'prettier/vim-prettier'
 NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'Quramy/tsuquyomi'
 
-
-
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'ctrlpvim/ctrlp.vim'
+NeoBundle 'HerringtonDarkholme/yats.vim'
+"NeoBundle 'neoclide/coc.nvim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
+NeoBundle 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 filetype plugin indent on
 NeoBundleCheck
