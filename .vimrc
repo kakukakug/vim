@@ -63,7 +63,6 @@ augroup fileTypeFold
     autocmd BufNewFile,BufRead *.tsx setlocal foldmethod=syntax foldlevel=1 
 augroup END
 
-:source $VIMRUNTIME/macros/matchit.vim
 
 :let $TODAY = strftime('%Y%m%d')
 
