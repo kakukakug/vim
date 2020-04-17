@@ -11,7 +11,6 @@ set tabstop=4
 set softtabstop=0
 set shiftwidth=4
 
-
 set autoindent
 
 set cursorline
@@ -25,10 +24,13 @@ set sidescrolloff=10
 
 set confirm
 set autoread
+
 set hlsearch
 set incsearch
 set ignorecase
+set smartcase
 set wrapscan
+
 set wildmenu wildmode=list:longest,full
 set history=1000
 set clipboard=unnamed,unnamedplus
@@ -68,10 +70,6 @@ augroup END
 :let $TODAY = strftime('%Y%m%d')
 
 
-if &compatible
-  set nocompatible
-endif
-
 " Add the dein installation directory into runtimepath
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
@@ -86,7 +84,6 @@ if dein#load_state('~/.cache/dein')
 "    call dein#add('roxma/vim-hug-neovim-rpc')
 "  endif
 
-
   call dein#add('tpope/vim-surround')
   call dein#add('Lokaltog/vim-easymotion')
   call dein#add('justinmk/vim-sneak')
@@ -94,7 +91,6 @@ if dein#load_state('~/.cache/dein')
   call dein#add('bkad/CamelCaseMotion')
 
   call dein#add('mattn/emmet-vim')
-
 
   call dein#add('morhetz/gruvbox')
   call dein#add('vim-airline/vim-airline')
@@ -147,7 +143,72 @@ colorscheme gruvbox
 set background=dark
 syntax on
 
+" matchit
+source $VIMRUNTIME/macros/matchit.vim
+let b:match_ignorecase = 1
 
+" NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" vim-easymotion
+" Disable default mappings
+"let g:EasyMotion_do_mapping = 0
+nmap <Leader>s <Plug>(easymotion-s2)
+xmap <Leader>s <Plug>(easymotion-s2)
+nmap <Leader>t <Plug>(easymotion-t2)
+" Turn on case sensitive feature
+let g:EasyMotion_smartcase = 1
+let g:EasyMotion_keys = 'ASDFGHJKL;'
+" Show target key with upper case to improve readability
+let g:EasyMotion_use_upper = 1
+" Jump to first match with enter & space
+let g:EasyMotion_enter_jump_first = 1
+let g:EasyMotion_space_jump_first = 1
+
+" `JK` Motions: Extend line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+" keep cursor column with `JK` motions
+"let g:EasyMotion_startofline = 0
+"" 任意文字数での検索
+nmap g/ <Plug>(easymotion-sn)
+xmap g/ <Plug>(easymotion-sn)
+omap g/ <Plug>(easymotion-tn)
+" ハイライトの表示
+hi EasyMotionTarget guifg=#80a0ff ctermfg=81
+" /vim-easymotion
+
+" CamelCaseMotion 
+let g:camelcasemotion_key = '<leader>'
+" /CamelCaseMotion 
+
+" vim-airline/vim-airline
+let g:airline_theme = 'gruvbox'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#wordcount#enabled = 0
+let g:airline#extensions#default#layout = [['a', 'b', 'c'], ['x', 'y', 'z']]
+let g:airline_section_c = '%t'
+let g:airline_section_x = '%{&filetype}'
+
+" prettier
+"let g:prettier#config#print_width = 100
+let g:prettier#config#tab_width = 2
+"let g:prettier#config#single_quote = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'true'
+let g:prettier#config#bracket_spacing = 'true'
+"let g:prettier#config#trailing_comma = 'es5'
+
+" vim-emmet
+let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/snippet/snippets_reactnative.json')), "\n"))
+
+" netrw
+let g:netrw_liststyle=1
+let g:netrw_banner=0
+let g:netrw_sizestyle="H"
+let g:netrw_timefmt="%Y/%m/%d %H:%M:%S"
+let g:netrw_preview=1
 
 " 日本語入力がオンのままでも使えるコマンド(Enterキーは必要)
 nnoremap あ a
@@ -166,7 +227,5 @@ augroup templateload
     autocmd!
     autocmd BufNewFile *.md 0r ~/.vim/template/template.md
 augroup END
-
-
 
 
