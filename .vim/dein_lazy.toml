@@ -1,0 +1,54 @@
+[[plugins]]
+repo = 'mattn/emmet-vim'
+hook_add = '''
+  let g:user_emmet_leader_key='<c-e>'
+  let g:user_emmet_settings = webapi#json#decode(join(readfile(expand('~/.vim/snippet/snippets_reactnative.json')), "\n"))
+'''
+on_ft = ['html','css']
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'hokaccha/vim-html5validator'
+on_ft = ['html']
+
+[[plugins]]
+repo = 'kannokanno/previm'
+on_ft = ['markdown']
+
+
+[[plugins]]
+repo = 'prettier/vim-prettier'
+hook_add = '''
+  let g:prettier#config#tab_width = 2
+  let g:prettier#config#jsx_bracket_same_line = 'true'
+  let g:prettier#config#bracket_spacing = 'true'
+'''
+#let g:prettier#config#print_width = 100
+#let g:prettier#config#single_quote = 'true'
+#let g:prettier#config#trailing_comma = 'es5'
+on_ft = ['javascript','typescript']
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['javascript','typescript']
+
+[[plugins]]
+repo = 'Quramy/tsuquyomi'
+on_ft = ['javascript','typescript']
+
+[[plugins]]
+repo = 'HerringtonDarkholme/yats.vim'
+on_ft = ['javascript','typescript']
+
+[[plugins]]
+repo = 'Shougo/neocomplcache'
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+
+
